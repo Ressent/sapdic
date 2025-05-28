@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel SAPD</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+<body>
+  <h1>Bienvenido al sistema SAPD</h1>
+  <button onclick="logout()">Cerrar sesión</button>
+
+  <script>
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        alert("Sesión cerrada");
+        window.location.href = "login.html";
+      });
+    }
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>
